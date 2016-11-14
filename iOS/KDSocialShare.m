@@ -55,8 +55,11 @@ RCT_EXPORT_METHOD(tweet:(NSDictionary *)options
     }
   }];
 
-  UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-  [ctrl presentViewController:composeCtl animated:YES completion: nil];
+  UIViewController *root = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+  while (root.presentedViewController != nil) {
+    root = root.presentedViewController;
+  }
+  [root presentViewController:composeCtl animated:YES completion: nil];
 }
 
 RCT_EXPORT_METHOD(shareOnFacebook:(NSDictionary *)options
@@ -94,8 +97,11 @@ RCT_EXPORT_METHOD(shareOnFacebook:(NSDictionary *)options
     }
   }];
 
-  UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-  [ctrl presentViewController:composeCtl animated:YES completion: nil];
+  UIViewController *root = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+  while (root.presentedViewController != nil) {
+    root = root.presentedViewController;
+  }
+  [root presentViewController:composeCtl animated:YES completion: nil];
 }
 
 
